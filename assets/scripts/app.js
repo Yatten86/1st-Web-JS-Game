@@ -199,7 +199,9 @@ function healPlayerHandler () {
 
 //print the battle log in the console
 function printLogHandler() {
-    console.log(battleLog);
+    for (const logEntry of battleLog ) {
+        console.log(logEntry)
+    }
 }
 
 //attack button
