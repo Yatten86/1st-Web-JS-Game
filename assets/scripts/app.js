@@ -12,16 +12,31 @@ const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER'
 
-//setting maximum HP box
-const enteredValue = prompt('Set maximum life for you and monster', '100');
 
 //takes the typed max HP, and insertit to the game...
-let chosenMaxLife = parseInt(enteredValue);
+//let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
 
-//check if user enters a number / if not set max life to maximum of 100.
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0){
+
+//if user inserts NaN, throw and log the error and set the default value
+function getMaxLifeValues() {
+    const enteredValue = prompt('Set maximum life for you and monster', '100');
+
+    const parsedValue = parseInt(enteredValue);
+    if (isNaN(parsedValue) || parsedValue <= 0) {
+        throw { message: 'Invalid usre input, not a number!' };
+    }
+    return parsedValue
+}
+
+let chosenMaxLife;
+
+try {
+    chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+    console.log(error);
     chosenMaxLife = 100;
+    alert ('You didn\'t entered a number, default value of 100 was used')
 }
 
 let currentMonsterHealth = chosenMaxLife;
