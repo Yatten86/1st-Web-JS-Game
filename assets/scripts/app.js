@@ -12,11 +12,7 @@ const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER'
 
-
-//takes the typed max HP, and insertit to the game...
-//let chosenMaxLife = parseInt(enteredValue);
 let battleLog = [];
-
 
 //if user inserts NaN, throw and log the error and set the default value
 function getMaxLifeValues() {
@@ -164,13 +160,6 @@ function attackMonster(mode) {
         mode === MODE_ATTACK
         ? LOG_EVENT_PLAYER_ATTACK
         : LOG_EVENT_PLAYER_STRONG_ATTACK;
-    // if (mode === MODE_ATTACK) {
-        // maxDamage = ATTACK_VALUE;
-        // logEvent = LOG_EVENT_PLAYER_ATTACK;
-    // } else {
-        // maxDamage = STRONG_ATTACK_VALUE;
-        // logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
-    // }
     let damage = dealMonsterDamage(maxDamage);
     currentMonsterHealth -= damage;
     writeToLog(
